@@ -21,8 +21,6 @@ public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int m=nums1.size(),n=nums2.size(),left=(m+n+1)/2,right=(m+n+2)/2;
         return (findKth(nums1,0,nums2,0,left)+findKth(nums1,0,nums2,0,right))/2.0;
-
-
     }
     int findKth(vector<int>& nums1,int i,vector<int>& nums2,int j,int k){
         if(i>=nums1.size()) return nums2[j+k-1];
