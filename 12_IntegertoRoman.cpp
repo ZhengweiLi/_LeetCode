@@ -27,10 +27,13 @@ public:
                 res += roman[n - 1];
                 for (int i = 6; i <= x; ++i) res += roman[n];
             } else if (x == 9) {
-                res = res + roman[n] + roman[n - 2];
+                res = res + roman[n] + roman[n - 2];//res+=roman[n]+roman[n-2]报错
             }
             num %= value[n];
         }
         return res;
     }
 };
+//补充知识：string对象可以与字符字面值或字符串字面值相加，但是+两侧至少要有一个string对象
+//         res = res + roman[n] + roman[n - 2];正确，先运算res + roman[n]， 转化为一个新的string对象，再与roman[n - 2]相加。
+//         res+=roman[n]+roman[n-2];报错，+=优先级低于+，先运算roman[n]+roman[n-2],不能把两个字符字面值相加。
