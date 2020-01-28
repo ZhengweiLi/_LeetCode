@@ -16,9 +16,10 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(!head||k==1) return NULL;
+        if(!head||k==1) return head;
         ListNode* dummy=new ListNode(-1),*pre=dummy;
         ListNode* cur=head;
+        dummy->next=head;
         for(int i=1;cur;i++){
 
             if(i%k==0){
