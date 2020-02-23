@@ -12,6 +12,8 @@ Example:
 Input: "Hello World"
 Output: 5
 */
+//字符串字面值：有双引号""构成，" ",代表一个字符数组，是由字符' '和'\0'构成
+//字面值：由单括号''构成。' '是字符' '
 class Solution {
 public:
     int lengthOfLastWord(string s) {
