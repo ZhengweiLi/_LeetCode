@@ -41,7 +41,7 @@ public:
         visited[i][j] = true;
 
         bool res = search(board, word, idx + 1, i - 1, j, visited) ||
-                   search(board, word, idx +1, i + 1, j, visited) ||
+                   search(board, word, idx + 1, i + 1, j, visited) ||
                    search(board, word, idx + 1, i, j - 1, visited) ||
                    search(board, word, idx + 1, i, j + 1, visited);
 
