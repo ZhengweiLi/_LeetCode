@@ -25,7 +25,7 @@ public:
         return res;
     }
 };
-//solution 2 monotone stack method
+//solution 2 monotonous stack method
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
