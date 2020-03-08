@@ -46,7 +46,7 @@ public:
 //solution 2:dynamic programming method
 1.subprob. dp[i][j][len]:s1从i开始，s2从j开始长度为len的字符串是否为Scramble
 2.dp[i][j][len] = true: len个元素，len-1种划分方法，只要有一种划分方法满足条件赋值为真，每种划分下都涉及到swap左右子节点的可能
-  dp[i][j][k] && dp[i+k][j+k][len-k] k= 1,...,len-1 该划分下s1、s2前k个元素和后len-k个元素比较，同时满足才能复值ture
+  dp[i][j][k] && dp[i+k][j+k][len-k] k= 1,...,len-1 该划分下s1、s2前k个元素比较并且后len-k个元素互相比较，同时满足才能复值ture
   dp[i][j+len-k][k] && dp[i+k][j][len-k] k= 1,...,len-1 该划分下s1的前k个元素和s2的后k个元素比较，剩下部分比较
 3.orig.prob. dp[0][0][n]
 class Solution {
