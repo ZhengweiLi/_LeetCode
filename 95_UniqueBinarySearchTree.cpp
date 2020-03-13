@@ -34,9 +34,8 @@ The above output corresponds to the 5 unique BST's shown below:
 class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
-        vector<TreeNode*> res;
-        helper(1, n);
-        return res;
+        if(n == 0) return {};
+        return helper(1, n);
     }
     vector<TreeNode*> helper(int begin, int end){
         if(begin > end) return {nullptr};
