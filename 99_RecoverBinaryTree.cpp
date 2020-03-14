@@ -27,6 +27,7 @@ Output: [3,1,null,null,2]
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ //solution 1: recursion method, space complexity: O(n)
 class Solution {
 public:
     void recoverTree(TreeNode* root) {
@@ -49,5 +50,53 @@ public:
         val.push_back(root->val);
 
         inorder(root->right, list, val);
+    }
+};
+// solution 2: two pointers + recursion, space complexity: O(n)
+class Solution {
+public:
+    TreeNode* pre = NULL, *first = NULL, *second = NULL;
+    void recoverTree(TreeNode* root) {
+        inorder(root);
+        swap(first->val, second->val);
+    }
+    void inorder(TreeNode* root){
+        if(!root) return;
+        inorder(root->left);
+
+        if(!pre) pre = root;
+        else{
+            if(pre->val > root->val){
+                if(!first) first = pre;
+                second = root;
+            }
+            pre = root;
+        }
+        inorder(root->right);
+    }
+};
+//solution 3: stack method, space complexity : O(n)
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        TreeNode* pre = NULL, *first = NULL, *second = NULL, *p = root;
+        stack<TreeNode*> st;
+
+        while(p || !st.empty()){
+            while(p){
+                st.push(p);
+                p = p->left;
+            }
+            p = st.top(); st.pop();
+            if(pre){
+                if(pre->val > p->val){
+                    if(!first) first = pre;
+                    second = p;
+                }
+            }
+            pre = p;
+            p = p->right;
+        }
+        swap(first->val, second->val);
     }
 };
