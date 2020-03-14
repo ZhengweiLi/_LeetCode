@@ -100,3 +100,34 @@ public:
         swap(first->val, second->val);
     }
 };
+//solution 4: merris traversal, space complexity : O(1)
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        TreeNode* first = nullptr, *second = nullptr, *pre = nullptr, *cur = root;
+        while(cur){
+            if(cur->left){
+                TreeNode* p = cur->left;
+                while(p->right && p->right != cur) p = p->right;
+
+                if(!p->right){
+                    p->right = cur;
+                    cur = cur->left;
+                    continue;
+                }
+                else{
+                    p->right = NULL;
+                }
+            }
+            if(pre && pre->val > cur->val){
+                if(!first){
+                    first = pre;
+                }
+                second = cur;
+            }
+            pre = cur;
+            cur = cur->right;
+        }
+        swap(first->val, second->val);
+    }
+};
