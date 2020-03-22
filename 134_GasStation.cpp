@@ -32,3 +32,20 @@ Travel to station 2. Your tank = 6 - 4 + 3 = 5
 Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.
 Therefore, return 3 as the starting index.
 */
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int total = 0, sum = 0, start = 0;
+        for(int i = 0; i < gas.size(); i++){
+
+            total += gas[i] - cost[i];
+            sum += gas[i] - cost[i];
+
+            if(sum < 0){
+                start = i + 1;
+                sum = 0;
+            }
+        }
+        return (total < 0) ? -1 : start;
+    }
+};
