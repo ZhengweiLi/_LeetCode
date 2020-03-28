@@ -55,3 +55,37 @@ private:
  * int param_3 = obj->top();
  * int param_4 = obj->getMin();
  */
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        min_val = INT_MAX;
+    }
+
+    void push(int x) {
+        if(x <= min_val){
+            s.push(min_val);
+            min_val = x;
+        }
+        s.push(x);
+    }
+
+    void pop() {
+        int t = s.top();s.pop();
+        if(t == min_val){
+            min_val = s.top();
+            s.pop();
+        }
+    }
+
+    int top() {
+        return s.top();
+    }
+
+    int getMin() {
+        return min_val;
+    }
+private:
+    int min_val;
+    stack<int> s;
+};
