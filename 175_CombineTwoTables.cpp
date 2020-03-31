@@ -31,3 +31,9 @@ FirstName, LastName, City, State
 # Write your MySQL query statement below
 select Person.FirstName, Person.LastName, Address.City, Address.State from
 Person left join Address on Person.PersonId = Address.PersonId;
+
+select Person.FirstName, Person.LastName, Address.City, Address.State from
+Person left join Address USING(PersonId);
+
+select Person.FirstName, Person.LastName, Address.City, Address.State from
+Person Natural left join Address;
