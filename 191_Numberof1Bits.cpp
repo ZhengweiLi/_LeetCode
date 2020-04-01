@@ -23,3 +23,14 @@ Output: 31
 Explanation: The input binary string
 11111111111111111111111111111101 has a total of thirty one '1' bits.
 */
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int res = 0;
+        for(int i = 0; i < 32; i++){
+            res += (n & 1);
+            n = n >> 1;
+        }
+        return res;
+    }
+};
