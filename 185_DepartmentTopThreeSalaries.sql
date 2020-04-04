@@ -37,3 +37,9 @@ your SQL query should return the following rows (order of rows does not matter).
 | Sales      | Sam      | 60000  |
 +------------+----------+--------+
 */
+# Write your MySQL query statement below
+select d.Name as Department, e1.Name as Employee, e1.Salary
+from Employee e1
+join Department d
+on e1.DepartmentId = d.Id
+where (select count(distinct Salary) from Employee e2 where e2.DepartmentId = e1.DepartmentId and e2.Salary > e1.Salary) < 3
