@@ -17,3 +17,6 @@ For example, your query should return the following for the above table:
 | a@b.com |
 +---------+
 */
+# Write your MySQL query statement below
+select Email from Person
+group by Email having count(*) > 1
