@@ -30,3 +30,7 @@ Write a SQL query to find employees who have the highest salary in each of the d
 | IT         | Jim      | 90000  |
 | Sales      | Henry    | 80000  |
 */
+# Write your MySQL query statement below
+select d.Name as Department, e1.Name as Employee, e1.Salary from Employee e1 join Department d
+on e1.DepartmentId = d.Id
+where Salary in (select max(salary) from Employee e2 where e1.DepartmentId = e2.DepartmentId)
