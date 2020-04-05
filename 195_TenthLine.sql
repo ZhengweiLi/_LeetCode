@@ -22,3 +22,5 @@ Note:
 1. If the file contains less than 10 lines, what should you output?
 2. There's at least three different solutions. Try to explore all possibilities.
 */
+# Read from the file file.txt and output the tenth line to stdout.
+awk '{if(NR == 10) print $0}' file.txt
