@@ -19,3 +19,7 @@ For example, after running your query, the above Person table should have the fo
 | 2  | bob@example.com  |
 +----+------------------+
 */
+# Write your MySQL query statement below
+delete p1 from Person p1 join
+Person p2 where p1.Email = p2.Email
+and p1.Id > p2.Id
