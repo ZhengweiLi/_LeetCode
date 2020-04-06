@@ -39,4 +39,28 @@ Input: version1 = "1.0", version2 = "1.0.0"
 Output: 0
 Explanation: The first version number does not have a third level revision number,
  which means its third level revision number is default to "0"*/
- 
+ class Solution {
+ public:
+     int compareVersion(string version1, string version2) {
+         string s1, s2;
+         int i = 0, j = 0, d1 = 0, d2 = 0;
+
+         while(i < version1.size() || j < version2.size()){
+             while(i < version1.size() && version1[i] != '.'){
+                 s1.push_back(version1[i++]);
+             }
+             while(j < version2.size() && version2[j] != '.'){
+                 s2.push_back(version2[j++]);
+             }
+
+             d1 = atoi(s1.c_str());
+             d2 = atoi(s2.c_str());
+             if(d1 > d2) return 1;
+             else if(d1 < d2) return -1;
+
+             s1.clear(); s2.clear();
+             i++; j++;
+         }
+         return 0;
+     }
+ };
