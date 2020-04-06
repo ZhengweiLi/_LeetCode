@@ -22,3 +22,15 @@ Output: 12
 Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
              Total amount you can rob = 2 + 9 + 1 = 12.
 */
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if(nums.size() <= 1) return nums.empty()? 0 : nums[0];
+        vector<int> dp = {nums[0],max(nums[0],nums[1])};
+
+        for(int i = 2; i < nums.size(); i++){
+            dp.push_back(max(dp[i - 2] + nums[i], dp[i - 1]));
+        }
+        return dp.back();
+    }
+};
