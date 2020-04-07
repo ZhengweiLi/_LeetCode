@@ -16,3 +16,34 @@ Input: [10]
 Output: 0
 Explanation: The array contains less than 2 elements, therefore return 0.
 */
+class Solution {
+public:
+    int maximumGap(vector<int>& nums) {
+        if(nums.size() <= 1) return 0;
+        int n = nums.size(),res = 0, pre = 0;
+        int mn = INT_MAX, mx = INT_MIN;
+
+        for(int num : nums){
+            mn = min(num, mn);
+            mx = max(num, mx);
+        }
+
+        int size = (mx - mn) / n + 1;
+        int cnt = (mx - mn) / size + 1;
+        vector<int> bucket_min(cnt, INT_MAX);
+        vector<int> bucket_max(cnt, INT_MIN);
+
+        for(int num : nums){
+            int idx = (num - mn) / size;
+            bucket_min[idx] = min(num, bucket_min[idx]);
+            bucket_max[idx] = max(num, bucket_max[idx]);
+        }
+        for(int i = 1; i < cnt; i++){
+            if(bucket_min[i] == INT_MAX ||bucket_max[i] == INT_MIN) continue;
+            res = max(res, bucket_min[i] - bucket_max[pre]);
+            pre = i;
+        }
+        return res;
+
+    }
+};
